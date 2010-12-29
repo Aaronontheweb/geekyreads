@@ -23,19 +23,19 @@ namespace geekwall.Controllers
         public void FeedAsync(string feeduri, int itemCount)
         {
             AsyncManager.OutstandingOperations.Increment();
+
             _feedfactory.BeginCreateFeed(new Uri(feeduri),
-                async => 
-                    AsyncManager.Sync(() =>
-                                            {
-                                                AsyncManager.Parameters[
-                                                    "feed"] =
-                                                    _feedfactory.
-                                                        EndCreateFeed(async);
-                                                AsyncManager.Parameters["itemCount"] = itemCount;
-                                                AsyncManager.
-                                                    OutstandingOperations.
-                                                    Decrement();
-                                            }));
+                                         async =>
+                                         AsyncManager.Sync(() =>
+                                                               {
+                                                                   AsyncManager.Parameters[
+                                                                       "feed"] =
+                                                                       _feedfactory.
+                                                                           EndCreateFeed(async);
+                                                                   AsyncManager.Parameters["itemCount"] = itemCount;
+                                                                   AsyncManager.OutstandingOperations.Decrement();
+                                                               }));
+
         }
 
         public JsonResult FeedCompleted(IFeed feed, int itemCount)

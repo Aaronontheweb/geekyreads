@@ -2,6 +2,7 @@
 using System.Web.Script.Serialization;
 using geekwall.Controllers;
 using geekwall.Helpers;
+using geekwall.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting.Web;
@@ -74,7 +75,7 @@ namespace geekwall.tests
         }
 
         /// <summary>
-        ///A test for FeedCompleted
+        ///A test to see if the FeedCompleted operation returns a properly serialized JSON object
         ///</summary>
         [TestMethod()]
         public void FeedCompletedShouldReturnValidJsonObject()
@@ -84,7 +85,6 @@ namespace geekwall.tests
             var serializer = new JavaScriptSerializer();
             JsonResult expected = null;
             JsonResult actual;
-
 
             if (_factory.PingFeed(new Uri(Feeduri)))
             {
@@ -106,6 +106,43 @@ namespace geekwall.tests
                 Assert.Inconclusive(string.Format("Unable to ping feed at uri {0}", Feeduri));
             }
 
+        }
+
+        [TestMethod()]
+        public void CanQueryFeedsInBulk()
+        {
+            var controller = new FeedController(_factory);
+            var waitHandle = new AutoResetEvent(false);
+            IFeedLocationService locationService = new FakeFeedLocationService();
+
+            // Create and attach event handler for the "Finished" event 
+            EventHandler eventHandler = (sender, e) => waitHandle.Set();
+            controller.AsyncManager.Finished += eventHandler;
+
+            foreach(var item in locationService.GetFeeds())
+            {
+                if (_factory.PingFeed(item))
+                {
+                    controller.FeedAsync(item.AbsoluteUri, ItemCount);
+
+                    const int msTimeout = 5000;
+                    if (!waitHandle.WaitOne(msTimeout, false))
+                    {
+                        Assert.Fail("Test timed out.");
+                    }
+
+                    var response = controller.AsyncManager.Parameters["feed"] as IFeed;
+                    Assert.IsNotNull(response);
+                    Assert.AreEqual(item.AbsoluteUri, response.FeedUri.AbsoluteUri);
+                    var summary = FeedSummarizer.SummarizeFeed(response, ItemCount);
+                    Assert.AreEqual(summary.Items.Count, ItemCount);
+                }
+                else
+                {
+                    Assert.Inconclusive(string.Format("Unable to ping feed at uri {0}", item));
+                }
+            }
+            
         }
     }
 }
