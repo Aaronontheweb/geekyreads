@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Uri>
+@{
+    View.Title = "Great Wall of Geeks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section AdditionalScripts{
+<script type="text/javascript" language="javascript">
+        $().ready(function () {
+            @foreach (var item in Model)
+            {   
+                 
+                <text>queryFeed('@item.AbsoluteUri', '@Guid.NewGuid()');</text>
+            }
+            
+        });
+
+
+        queryFeed = function(uri, guid){
+             var e = $('<li id="'+ guid +'"><div class="feed"><img class="loader" src="@Url.Content("~/Content/img/ajax-loader.gif")"/></div></li>');
+             $('#feedarea').append(e);
+             $.ajax({
+                type: 'GET',
+                url: 'Feed/Feed?feeduri='+ uri +'&itemCount=3',
+                dataType: 'json',
+                success: function(data){
+                    $('div',e).append('<h3><a href="' + data.FeedLink + '">' + data.FeedTitle + '</a></h3><ol></ol>');
+
+                    $.each(data.Items, function(index, item){
+                        $('ol', e).append('<li><a href="'+ item.ItemUri +'">'+ item.ItemTitle +'</a></li>');
+                    });
+
+                    $('.loader', e).remove();
+
+                },
+                error: function(XmlHttpRequest, status){
+                    $('#' + guid).remove();
+                },
+                timeout:15000
+            });
+        };
+
+
+</script>
+}
+<div>
+    <ul id="feedarea" class="feedcontainer">
+    </ul>
+    <div class="clear">
+    </div>
+</div>

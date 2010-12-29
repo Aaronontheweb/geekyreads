@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<feeds>
+  <feed>http://www.aaronstannard.com/syndication.axd</feed>
+  <feed>http://teddziuba.com/atom.xml</feed>
+  <feed>http://weblogs.asp.net/scottgu/atom.aspx</feed>
+  <feed>http://sheddingbikes.com/feed.xml</feed>
+  <feed>http://feedproxy.google.com/TechCrunch</feed>
+  <feed>http://syndication.thedailywtf.com/TheDailyWtf</feed>
+  <feed>http://feeds.feedburner.com/rtur</feed>
+</feeds>
