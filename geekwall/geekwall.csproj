@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\img\ajax-loader.gif" />
+    <Content Include="Content\img\li.gif" />
     <Content Include="Data\geekfeeds.xml">
       <SubType>Designer</SubType>
     </Content>

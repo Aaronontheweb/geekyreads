@@ -14,19 +14,30 @@
             
         });
 
+       var columnNum = 1;
 
         queryFeed = function(uri, guid){
              var e = $('<li id="'+ guid +'"><div class="feed"><img class="loader" src="@Url.Content("~/Content/img/ajax-loader.gif")"/></div></li>');
-             $('#feedarea').append(e);
+
+             $('#column' + columnNum + ' ul').append(e);
+             if(columnNum == 3){
+                columnNum = 1;
+             }
+             else{
+
+                columnNum++;
+
+             }
+
              $.ajax({
                 type: 'GET',
                 url: 'Feed/Feed?feeduri='+ uri +'&itemCount=3',
                 dataType: 'json',
                 success: function(data){
-                    $('div',e).append('<h3><a href="' + data.FeedLink + '">' + data.FeedTitle + '</a></h3><ol></ol>');
+                    $('div',e).append('<h3><a href="' + data.FeedLink + '">' + data.FeedTitle + '</a></h3><ul class="feeditemlist"></ul>');
 
                     $.each(data.Items, function(index, item){
-                        $('ol', e).append('<li><a href="'+ item.ItemUri +'">'+ item.ItemTitle +'</a></li>');
+                        $('.feeditemlist', e).append('<li><a href="'+ item.ItemUri +'">'+ item.ItemTitle +'</a></li>');
                     });
 
                     $('.loader', e).remove();
@@ -43,8 +54,17 @@
 </script>
 }
 <div>
-    <ul id="feedarea" class="feedcontainer">
-    </ul>
+    <div id="feedarea" class="feedcontainer">
+        <div id="column1">
+            <ul></ul>
+        </div>
+        <div id="column2">
+            <ul></ul>
+        </div>
+        <div id="column3">
+            <ul></ul>
+        </div>
+    </div>
     <div class="clear">
     </div>
 </div>

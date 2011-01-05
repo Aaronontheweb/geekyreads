@@ -178,7 +178,7 @@ ul#menu li.selected a
 }
 
 /* WRAPPING ROW OF RSS FEEDS */
-ul.feedcontainer
+div#feedarea
 {
     width:900px;
     display:block;
@@ -186,25 +186,29 @@ ul.feedcontainer
     margin-right:auto;
 }
 
-ul.feedcontainer li
+div#column1, div#column2, div#column3
 {
-    float:left;
-    list-style: none;
     width:280px;
     padding-right:20px;
+    float:left;
 }
 
-div.feed ol
+.feedcontainer ul li
+{
+   list-style: none;
+}
+
+div.feed ul
 {
     margin-left:0px;
     padding-left:0px;    
 }
 
-div.feed ol li
+ul.feeditemlist li
 {    
-    display:block;
-    list-style: decimal outside none;
     padding-bottom:5px;
+    margin-left:18px;
+    list-style: disc outside;
 }
 
 /* FORM LAYOUT ELEMENTS   
