@@ -24,19 +24,30 @@ namespace geekwall.Controllers
         {
             AsyncManager.OutstandingOperations.Increment();
 
-            
-
-            _feedfactory.BeginCreateFeed(new Uri(feeduri),
+            if(HttpRuntime.Cache.IsEmpty(feeduri))
+            {
+                _feedfactory.BeginCreateFeed(new Uri(feeduri),
                                          async =>
                                          AsyncManager.Sync(() =>
-                                                               {
-                                                                   AsyncManager.Parameters[
-                                                                       "feed"] =
-                                                                       _feedfactory.
-                                                                           EndCreateFeed(async);
-                                                                   AsyncManager.Parameters["itemCount"] = itemCount;
-                                                                   AsyncManager.OutstandingOperations.Decrement();
-                                                               }));
+                                         {
+                                                 var feed = _feedfactory.EndCreateFeed(async);
+                                                 AsyncManager.Parameters["feed"] = feed;
+                                                 AsyncManager.Parameters["itemCount"] = itemCount;
+                                                 HttpRuntime.Cache.Insert(feeduri, feed, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 0, 60));
+                                                 AsyncManager.OutstandingOperations.Decrement();
+
+                                         }));
+            }
+            else
+            {
+                AsyncManager.Sync(() =>
+                                      {
+                                          AsyncManager.Parameters["feed"] = HttpRuntime.Cache[feeduri];
+                                          AsyncManager.Parameters["itemCount"] = itemCount;
+                                          AsyncManager.OutstandingOperations.Decrement();
+                                      });
+            }
+            
 
         }
 

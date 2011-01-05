@@ -96,6 +96,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CacheExtensions.cs" />
     <Compile Include="Helpers\FeedSummarizer.cs" />
     <Compile Include="Models\LocalFeedLocationService.cs" />
     <Compile Include="Models\IFeedLocationService.cs" />
@@ -104,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\img\ajax-loader.gif" />
+    <Content Include="Content\img\li.gif" />
     <Content Include="Data\geekfeeds.xml">
       <SubType>Designer</SubType>
     </Content>
