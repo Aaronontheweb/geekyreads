@@ -24,6 +24,8 @@ namespace geekwall.Controllers
         {
             AsyncManager.OutstandingOperations.Increment();
 
+            
+
             _feedfactory.BeginCreateFeed(new Uri(feeduri),
                                          async =>
                                          AsyncManager.Sync(() =>
