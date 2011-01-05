@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <feeds>
   <feed>http://www.aaronstannard.com/syndication.axd</feed>
+  <feed>http://channel9.msdn.com/Feeds/RSS</feed>
   <feed>http://teddziuba.com/atom.xml</feed>
   <feed>http://weblogs.asp.net/scottgu/atom.aspx</feed>
   <feed>http://sheddingbikes.com/feed.xml</feed>
   <feed>http://feedproxy.google.com/TechCrunch</feed>
   <feed>http://syndication.thedailywtf.com/TheDailyWtf</feed>
   <feed>http://feeds.feedburner.com/rtur</feed>
+  <feed>http://news.ycombinator.com/rss</feed>
+  <feed>http://dkdevelopment.net/feed/</feed>
+  <feed>http://feeds.haacked.com/haacked</feed>
+  <feed>http://feeds.codethinked.com/codethinked</feed>
+  <feed>http://feeds.feedburner.com/Dotnetdoc</feed>  
 </feeds>

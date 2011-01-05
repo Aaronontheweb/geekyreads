@@ -16,7 +16,7 @@ namespace geekwall.Helpers
                            FeedTitle = feed.Title,
                            FeedUri = feed.FeedUri,
                            FeedLink = new Uri(feed.Link),
-                           Items = feed.Items.Reverse().Skip(feed.Items.Count() - itemCount).Select(SummarizeFeedItem).ToList()
+                           Items = feed.Items.Reverse().Skip(feed.Items.Count() - itemCount).Select(SummarizeFeedItem).Reverse().ToList()
                        };
         }
 
