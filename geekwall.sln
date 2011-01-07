@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geekwall", "geekwall\geekwa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4A3A1056-0DF3-43BF-BBFF-AECE1BC8056A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geekwall.tests", "geekwall.tests\geekwall.tests.csproj", "{E0DF9D82-5A97-4276-A68D-BCD8B43841A3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{2110FDD8-BAB6-4EF3-A7E0-778801F9328C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2110FDD8-BAB6-4EF3-A7E0-778801F9328C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2110FDD8-BAB6-4EF3-A7E0-778801F9328C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0DF9D82-5A97-4276-A68D-BCD8B43841A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0DF9D82-5A97-4276-A68D-BCD8B43841A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0DF9D82-5A97-4276-A68D-BCD8B43841A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0DF9D82-5A97-4276-A68D-BCD8B43841A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

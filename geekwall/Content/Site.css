@@ -105,6 +105,18 @@ page width. Or, you can specify an exact pixel width. */
     font-size: 32px !important;
 }
 
+#header a
+{
+    text-decoration:none;
+    color: #fff;
+}
+
+#header a:hover
+{
+    color: #1d60ff;
+}
+
+
 #main
 {
     padding: 30px 30px 15px 30px;
