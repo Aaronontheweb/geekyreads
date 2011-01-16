@@ -18,7 +18,7 @@ namespace geekwall.Controllers
         }
 
         //
-        // GET: /Feed/
+        // GET: Feed/Feed/{feeduri}
 
         public void FeedAsync(string feeduri, int itemCount)
         {
@@ -33,7 +33,7 @@ namespace geekwall.Controllers
                                                  var feed = _feedfactory.EndCreateFeed(async);
                                                  AsyncManager.Parameters["feed"] = feed;
                                                  AsyncManager.Parameters["itemCount"] = itemCount;
-                                                 HttpRuntime.Cache.Insert(feeduri, feed, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 0, 60));
+                                                 HttpRuntime.Cache.Insert(feeduri, feed, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 20, 0));
                                                  AsyncManager.OutstandingOperations.Decrement();
 
                                          }));
