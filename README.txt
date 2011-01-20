@@ -1,5 +1,5 @@
 #####################################################################################################
-README: Quick and Dirty Feed Parser 0.3
+README: Quick and Dirty Feed Parser 1.01
 
 1. About Quick and Dirty Feed Parser
 2. Features
@@ -14,7 +14,8 @@ If you'd like to contribute to the project, join us at CodePlex! http://qdfeed.c
 1. About Quick and Dirty Feed Parser
 
 What's Quick and Dirty Feed Parser for?
-Quick and Dirty Feed Parser is a lightweight .NET 2.0 library designed to give developers an agnostic way of parsing RSS 2.0 and Atom 1.0 XML syndication formats. QD Feed Parser parses both Atom and RSS feeds into business objects with common interfaces which expose the substance of the feeds - that way you can get to the business of syndicating content without worrying about what format it's in.
+Quick and Dirty Feed Parser is a lightweight .NET library designed to give developers an agnostic way of parsing RSS 2.0 and Atom 1.0 XML syndication formats. QD Feed Parser parses both Atom and RSS feeds into business objects with common interfaces which expose the substance of the feeds - that way you can get to the business of syndicating content without worrying about what format it's in.
+Quick and Dirty Feed Parser works with .NET 4.0, Silverlight 4, and Windows Phone 7.
 
 Why should I use Quick and Dirty Feed Parser?
 Because it's awesome. QD Feed Parser spares you the banality known as XML parsing. It has a straightforward contract with the developers who use this library:
@@ -33,7 +34,9 @@ That's it. You send the parser the URI of a valid RSS 2.0 / Atom 1.0 feed and ge
 Here's a quick summary of some of the features you might in Quick and Dirty Feed Parser:
 	-Format-agnostic parsing of Atom 1.0 and RSS 2.0 feeds;
 	-Seamless consumption of feeds over Http and the file system;
-	-Synchronous and Asynchronous methods for querying feeds; and
+	-Synchronous and Asynchronous methods for querying feeds;
+	-Low memory consumption RSS/Atom objects that are easy to use;
+	-Easily serializable classes built to work with any type of storage, including IsolatedStorage; and
 	-Simple, simple, simple interfaces which abstract away 100% of the XML from your feeds. No more parsing. Ever.
 
 If you'd like to learn more, check out our documentation: http://qdfeed.codeplex.com/documentation
